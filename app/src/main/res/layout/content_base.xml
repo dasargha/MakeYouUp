@@ -12,7 +12,7 @@
         android:id="@+id/base_rl_contentview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <include layout="@layout/content_main" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
