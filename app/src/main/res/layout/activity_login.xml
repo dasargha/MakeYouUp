@@ -5,9 +5,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1.5"
-        android:background="@drawable/login_bg">
+        android:background="@drawable/login_bg2">
 
         <ImageView
             android:layout_width="match_parent"

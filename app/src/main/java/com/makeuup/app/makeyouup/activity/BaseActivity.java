@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ public  class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Context mContext;
     private RelativeLayout base_rl_contentview;
+    private AppBarLayout appBarLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public  class BaseActivity extends AppCompatActivity
         base_rl_contentview = (RelativeLayout) findViewById(R.id.base_rl_contentview);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,7 +48,8 @@ public  class BaseActivity extends AppCompatActivity
 
     private void changeTitleAppearance() {
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        collapsingToolbarLayout.setTitle(" ");
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;
@@ -56,7 +60,7 @@ public  class BaseActivity extends AppCompatActivity
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle("MakeYouUp");
+                    collapsingToolbarLayout.setTitle(" ");
                     isShow = true;
                 } else if(isShow) {
                     collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
@@ -75,6 +79,21 @@ public  class BaseActivity extends AppCompatActivity
 
     }
 
+    protected void setAppbarBehaviour(boolean flag){
+if(flag){
+   /* appBarLayout.setExpanded(flag, flag);
+    appBarLayout.setActivated(flag);
+    CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)appBarLayout.getLayoutParams();
+    lp.height = (int) getResources().getDimension(R.dimen.toolbar_expand_height);*/
+}else{
+    appBarLayout.setExpanded(flag, flag);
+    appBarLayout.setActivated(flag);
+
+ CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)appBarLayout.getLayoutParams();
+    //lp.height = (int) getResources().getDimension(android.R.dimen.abc_action_bar_default_height);
+}
+
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

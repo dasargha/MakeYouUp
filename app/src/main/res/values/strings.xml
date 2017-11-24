@@ -97,4 +97,7 @@
     <string name="view_profile">View Profile</string>
     <string name="offers">OFFERS</string>
     <string name="wallet">WALLET</string>
+    <string name="title_activity_dash">DashActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
